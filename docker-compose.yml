@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+    app:
+      build: .
+      volumes:
+        - ./src/.config:/home/username/.config:z
+        - ./src/.local:/home/username/.local:z
