@@ -10,10 +10,10 @@ start-into: _down _up _run && _down
 restart-into: _down _build _up _run && _down
 
 _down:
-	docker compose down -v --remove-orphans
+  docker compose down -v --remove-orphans
 _build:
-	docker compose build
+  docker compose build
 _up: 
-	docker compose up -d
+  docker compose up -d
 _run:
-	docker compose run {{ container_name }} /bin/bash
+  docker compose run {{ container_name }} /bin/bash

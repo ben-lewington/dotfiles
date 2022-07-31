@@ -33,7 +33,12 @@ just start-into
 nvim
 ```
 with the src folder, there are `.config` and `.local` folders which contain the main configuration
-files. These are mounted into container.
+files. These are both mounted into the container, however the contents of .local is not tracked. 
+This is so that configuration can be persisted across container (re)builds if required, but testing
+bootstrapping the configuration can easily be conducted by clearing down the .local folder:
+```bash
+rm -Rf .local/* 2> /dev/null
+```
 
 Neovim uses `.config/nvim/` as an entrypoint for configuration, expecting either an `init.vim` or
 an `init.lua` as an entrypoint.

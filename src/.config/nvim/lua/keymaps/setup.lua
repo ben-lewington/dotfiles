@@ -15,6 +15,9 @@ M._keymaps = {
   M.keymap_cfg({ "n" }, "<C-s>", ":w<cr>"),
   M.keymap_cfg({ "i" }, "<C-s>", "<Esc>:w<cr>i"),
   M.keymap_cfg({ "n" }, "<C-x>", ":wq<cr>"),
+  M.keymap_cfg({ "i" }, "jj", "<Esc>"),
+  M.keymap_cfg({ "i" }, "jk", "<Esc>"),
+  M.keymap_cfg({ "i" }, "kk", "<Esc>"),
 }
 
 M._noop_keymap_cfg = function(modes, pattern, opts)
@@ -47,7 +50,7 @@ M.bind = function(keymaps)
   keymaps = keymaps or {}
   M.add_keymaps(keymaps)
   for _, conf in ipairs(M._keymaps) do
-    vim.keymap.set(conf.modes, conf.pattern, conf.bind, conf.opts)
+    K.set(conf.modes, conf.pattern, conf.bind, conf.opts)
   end
 end
 

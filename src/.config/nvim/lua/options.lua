@@ -1,7 +1,24 @@
-vim.opt.laststatus = 3 -- set global statusline
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.cmd("set colorcolumn=100")
+O.laststatus = 3 -- set global statusline
+O.number = true
+O.relativenumber = true
+C("set colorcolumn=100")
+
+local listchars = {
+  { char = "eol", map = "↲" },
+  { char = "tab", map = "»-" },
+  { char = "space", map = "␣" },
+  { char = "trail", map = "𝁢" },
+  { char = "extends", map = "…" },
+  { char = "precedes", map = "…" },
+  { char = "conceal", map = "┊" },
+  { char = "nbsp", map = "☠" },
+}
+
+for _, cfg in ipairs(listchars) do
+  C("set listchars=" .. cfg.char .. ":" .. cfg.map)
+end
+
+C("set list")
 -- Disable builtin plugins
 local disabled_built_ins = {
   "2html_plugin",
@@ -30,7 +47,7 @@ local disabled_built_ins = {
   "bugreport",
   "ftplugin",
 }
-
+-- disable them all
 for _, plugin in pairs(disabled_built_ins) do
-  vim.g["loaded_" .. plugin] = 1
+  G["loaded_" .. plugin] = 1
 end

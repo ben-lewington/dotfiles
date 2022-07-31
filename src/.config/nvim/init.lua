@@ -1,6 +1,5 @@
 -- Utils Packages
 require('utils')
-require('utils.globals')
 -- Options
 require('options')
 -- Keymaps
