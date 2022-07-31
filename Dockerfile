@@ -29,4 +29,3 @@ COPY --chown=username:users ./src/ /home/username/
 
 USER username
 WORKDIR /home/username
-# RUN echo 'root:Docker!' | chpasswd
