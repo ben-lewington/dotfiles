@@ -1,6 +1,8 @@
-local _mod = {}
+local bootstrap = require('_packer.bootstrap')
 
-_mod.packer = require('packer').startup(function()
+local packer = require('packer')
+
+packer.startup(function()
   use 'nvim-lua/plenary.nvim'
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -13,6 +15,10 @@ _mod.packer = require('packer').startup(function()
       require('nvim-treesitter.install').update({ with_sync = true })
     end
   }
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  if bootstrap.first then
+    packer.sync()
+  end
 end)
-
-return _mod

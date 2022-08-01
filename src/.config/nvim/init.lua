@@ -1,4 +1,4 @@
--- Utils Packages
+-- Utils Packages (export global aliases)
 require('utils')
 -- Options
 require('options')
@@ -10,3 +10,5 @@ require('autocmds')
 require('colors')
 -- setup packer
 require('_packer')
+-- setup lsp
+require('_lspconfig')

@@ -1,8 +1,9 @@
 A = vim.api
-O = vim.opt 
+O = vim.opt
 C = vim.cmd
 G = vim.g
 K = vim.keymap
+F = vim.fn
 
 --- Debugger
 ---@param obj any

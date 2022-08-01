@@ -4,20 +4,17 @@ O.relativenumber = true
 C("set colorcolumn=100")
 
 local listchars = {
-  { char = "eol", map = "↲" },
-  { char = "tab", map = "»-" },
-  { char = "space", map = "␣" },
-  { char = "trail", map = "𝁢" },
-  { char = "extends", map = "…" },
-  { char = "precedes", map = "…" },
-  { char = "conceal", map = "┊" },
-  { char = "nbsp", map = "☠" },
+  'eol:↲',
+  'tab:»-',
+  -- 'space:␣',
+  'trail:𝁢',
+  'extends:…',
+  'precedes:…',
+  'conceal:┊',
+  'nbsp:☠',
 }
 
-for _, cfg in ipairs(listchars) do
-  C("set listchars=" .. cfg.char .. ":" .. cfg.map)
-end
-
+C("set listchars=" .. table.concat(listchars, ","))
 C("set list")
 -- Disable builtin plugins
 local disabled_built_ins = {
