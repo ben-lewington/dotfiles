@@ -1,5 +1,4 @@
 ARG BASE_IMAGE=ubuntu:focal
-ARG NON_ROOT_USER=username
 
 FROM $BASE_IMAGE as builder
 
@@ -24,8 +23,6 @@ RUN useradd -m \
   -G root \
   -u 1000 \
   username
-
-# COPY --chown=username:users ./src/ /home/username/
 
 USER username
 WORKDIR /home/username

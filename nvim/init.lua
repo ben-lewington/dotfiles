@@ -1,4 +1,3 @@
-require "opts"
 local utils = require "utils"
 
 utils.keymaps {
@@ -24,7 +23,6 @@ utils.keymaps {
     { "n", "<C-x>",     ":wqall!<cr>" },
     { "i", "jj",        "<Esc>" },
     { "i", "jk",        "<Esc>" },
-    { "i", "kk",        "<Esc>" },
     { "i", "kj",        "<Esc>" },
 }
 
@@ -103,6 +101,7 @@ utils.plugin_manager {
     path = "lazy/lazy.nvim",
     git = "https://github.com/folke/lazy.nvim.git",
 }.setup {
+    { "lewis6991/gitsigns.nvim" },
     {
         "RRethy/nvim-base16",
         config = function()
@@ -156,7 +155,7 @@ utils.plugin_manager {
             require("nvim-tree").setup(opts)
             vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
-            require("utils").nvim_create_au(
+            utils.nvim_create_au(
                 "OpenNvimTreeOnStartup",
                 "VimEnter",
                 {
@@ -382,8 +381,8 @@ utils.plugin_manager {
                 component_separators = { left = "", right = "" },
                 section_separators = { left = "", right = "" },
                 disabled_filetypes = {
-                    statusline = { "NVimTree" },
-                    winbar = { "NVimTree" },
+                    statusline = { "NvimTree" },
+                    winbar = { "NvimTree" },
                 },
                 ignore_focus = {},
                 always_divide_middle = true,
@@ -397,38 +396,42 @@ utils.plugin_manager {
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = { "branch", "diff", "diagnostics" },
-                lualine_c = { "filename" },
+                lualine_c = {
+                    function()
+                        local leaf = function(fq_path)
+                            local c = fq_path:reverse():match("([^/]+)/")
+                            if c == nil then return nil end
+                            return c:reverse()
+                        end
+
+                        local buf = vim.api.nvim_buf_get_name(0)
+                        local cwd = io.popen("pwd"):read("*a")
+                        cwd = cwd:sub(1, cwd:len() - 1) .. "/"
+
+                        local _, end_idx = string.find(buf, cwd, 1, true)
+
+                        if end_idx == nil then
+                            return leaf(buf) or "[No Name]"
+                        end
+
+                        return buf:sub(end_idx + 1)
+                    end,
+                    function()
+                        local buf = vim.api.nvim_get_current_buf()
+
+                        local cur_line = ""
+
+                        return vim.api.nvim_buf_line_count(buf) .. "L"
+                    end
+                },
                 lualine_x = { "encoding", "fileformat", "filetype" },
                 lualine_y = { "progress" },
                 lualine_z = { "location" }
             },
-            inactive_sections = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = { "filename" },
-                lualine_x = { "location" },
-                lualine_y = {},
-                lualine_z = {}
-            },
-            tabline = {},
             winbar = {
                 lualine_a = { "filename" },
                 lualine_b = { function() return require("nvim-navic").get_location() end },
-                lualine_c = {},
-                lualine_x = {},
-                lualine_y = {},
-                lualine_z = {}
             },
-            inactive_winbar = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = {},
-                lualine_x = {},
-                lualine_y = {},
-                lualine_z = {}
-            },
-            extensions = {}
         }
-
     },
 }
