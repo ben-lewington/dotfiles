@@ -1,1 +1,2 @@
-src/.local
+docker/nvim/.local/*
+!docker/nvim/.local/.gitkeep

@@ -25,7 +25,7 @@ RUN useradd -m \
   -u 1000 \
   username
 
-COPY --chown=username:users ./src/ /home/username/
+# COPY --chown=username:users ./src/ /home/username/
 
 USER username
 WORKDIR /home/username

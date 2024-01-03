@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+docker="docker compose -f ./docker/compose.yml"
+
+set -xeo nounset
+
+$docker rm -fsv
+$docker build --pull
+$docker up -d
+$docker run --rm --no-deps app /bin/bash
