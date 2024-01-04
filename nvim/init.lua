@@ -1,10 +1,5 @@
 local utils = require "utils"
 
-utils.plugin_manager {
-    name = "lazy", path = "lazy/lazy.nvim",
-    git = "https://github.com/folke/lazy.nvim.git",
-}.setup(require "plugins")
-
 utils.run_setup(
     require "setup",
     require "data"
@@ -16,3 +11,8 @@ utils.run_setup(
     "disable_plugins",
     "commands",
 }
+
+utils.plugin_manager {
+    name = "lazy", path = "lazy/lazy.nvim",
+    git = "https://github.com/folke/lazy.nvim.git",
+}.setup(require "plugins")
