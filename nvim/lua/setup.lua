@@ -15,7 +15,6 @@ if os.getenv('WSL_DISTRO_NAME') ~= nil then
     }
 end
 
-
 vim.paste = (function(lines, _)
     vim.cmd [[set paste]]
     vim.api.nvim_put(lines, 'c', true, true)
@@ -37,13 +36,8 @@ return {
     end,
 
     autocmds = function(cmds)
-        local nvim_create_au = function(grp, cmd, cmd_tbl)
-            vim.api.nvim_create_augroup(grp, {})
-            vim.api.nvim_create_autocmd(cmd, cmd_tbl)
-        end
-
         for _, cmd in ipairs(cmds) do
-            nvim_create_au(unpack(cmd))
+            require "utils".nvim_create_au(unpack(cmd))
         end
     end,
 

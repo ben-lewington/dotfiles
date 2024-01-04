@@ -28,4 +28,23 @@ return {
             end
         end
     end,
+
+    plugin_manager = function(opts)
+        local fn = vim.fn
+        local data_path = vim.fn.stdpath("data") .. "/" .. opts.path
+
+        vim.opt.rtp:prepend(data_path)
+
+        if fn.empty(fn.glob(data_path)) > 0 then
+            vim.fn.system({
+                "git", "clone",
+                "--depth", "1",
+                "--filter=blob:none",
+                opts.git,
+                data_path,
+            })
+        end
+
+        return require(opts.name)
+    end,
 }
