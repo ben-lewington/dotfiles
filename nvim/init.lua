@@ -15,4 +15,4 @@ utils.run_setup(
 utils.plugin_manager {
     name = "lazy", path = "lazy/lazy.nvim",
     git = "https://github.com/folke/lazy.nvim.git",
-}.setup(require "plugins")
+}.setup "plugins"
