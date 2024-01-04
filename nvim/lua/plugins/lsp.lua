@@ -1,3 +1,32 @@
+local setup_lsp = function(lsp)
+    local lsp_keymaps = function(kms, opts)
+        for _, k in pairs(kms) do
+            vim.keymap.set(k[3] or "n", k[1], k[2], opts)
+        end
+    end
+
+    lsp.on_attach(function(client, bufnr)
+        local opts = { buffer = bufnr, remap = false }
+        lsp_keymaps(
+            {
+                { "gd",          vim.lsp.buf.definition },
+                { "K",           vim.lsp.buf.hover },
+                { "<leader>vws", vim.lsp.buf.workspace_symbol },
+                { "<leader>vd",  vim.diagnostic.open_float },
+                { "[d",          vim.diagnostic.goto_next },
+                { "]d",          vim.diagnostic.goto_prev },
+                { "<leader>vca", vim.lsp.buf.code_action },
+                { "<leader>vrr", vim.lsp.buf.references },
+                { "<leader>vrn", vim.lsp.buf.rename },
+                { "<C-b>",       ":LspStop<CR>:LspStart<CR>" },
+                { "<C-h>",       vim.lsp.buf.signature_help,  "i" },
+            },
+            opts
+        )
+        pcall(require("nvim-navic").attach, client, bufnr)
+    end)
+end
+
 local setup_completion = function(lsp)
     local cmp = require("cmp")
     local cmp_action = lsp.cmp_action()
@@ -36,36 +65,6 @@ local setup_mason = function(lsp)
             end,
         }
     }
-end
-
-local setup_lsp = function(lsp)
-    local lsp_keymaps = function(kms, opts)
-        for _, k in pairs(kms) do
-            vim.keymap.set(k[3] or "n", k[1], k[2], opts)
-        end
-    end
-
-    lsp.on_attach(function(client, bufnr)
-        local opts = { buffer = bufnr, remap = false }
-        lsp_keymaps(
-            {
-                { "gd",          vim.lsp.buf.definition },
-                { "K",           vim.lsp.buf.hover },
-                { "<leader>vws", vim.lsp.buf.workspace_symbol },
-                { "<leader>vd",  vim.diagnostic.open_float },
-                { "[d",          vim.diagnostic.goto_next },
-                { "]d",          vim.diagnostic.goto_prev },
-                { "<leader>vca", vim.lsp.buf.code_action },
-                { "<leader>vrr", vim.lsp.buf.references },
-                { "<leader>vrn", vim.lsp.buf.rename },
-                { "<C-b>",       ":LspStop<CR>:LspStart<CR>" },
-                { "<C-h>",       vim.lsp.buf.signature_help,  "i" },
-            },
-            opts
-        )
-        pcall(require("nvim-navic").attach, client, bufnr)
-    end)
-
 end
 
 return {
