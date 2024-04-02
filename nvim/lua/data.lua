@@ -21,6 +21,7 @@ return {
         signcolumn = "yes",
         updatetime = 50,
         colorcolumn = "100",
+        filetype = "on",
     },
     keymaps = {
         { "v", "J",         ":m \">+1<CR>gv=gv" },

@@ -13,8 +13,13 @@ return {
             "OpenNvimTreeOnStartup",
             "VimEnter",
             {
-                callback = function()
-                    require("nvim-tree.api").tree.open()
+                callback = function(tbl)
+                    local file = tbl.file
+                    if file == "" then
+                        require("nvim-tree.api").tree.open { current_window = true }
+                    elseif file == vim.loop.cwd()  then
+                        require("nvim-tree.api").tree.open()
+                    end
                 end
             }
         )

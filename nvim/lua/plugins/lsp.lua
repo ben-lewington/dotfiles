@@ -10,6 +10,7 @@ local setup_lsp = function(lsp)
         lsp_keymaps(
             {
                 { "gd",          vim.lsp.buf.definition },
+                { "gr",          vim.lsp.buf.references },
                 { "K",           vim.lsp.buf.hover },
                 { "<leader>vws", vim.lsp.buf.workspace_symbol },
                 { "<leader>vd",  vim.diagnostic.open_float },
@@ -31,6 +32,8 @@ local setup_completion = function(lsp)
     local cmp = require("cmp")
     local cmp_action = lsp.cmp_action()
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+    require('luasnip.loaders.from_vscode').lazy_load()
 
     cmp.setup {
         sources = {
@@ -82,7 +85,12 @@ return {
         { "hrsh7th/cmp-nvim-lua" },
         { "saadparwaiz1/cmp_luasnip" },
         -- Snippets
-        { "L3MON4D3/LuaSnip" },
+        {
+            "L3MON4D3/LuaSnip",
+            dependencies = {
+                "rafamadriz/friendly-snippets"
+            },
+        },
         { "rafamadriz/friendly-snippets" },
         -- Nvim API LSP support
         { "folke/neodev.nvim" },
@@ -91,7 +99,6 @@ return {
             "SmiteshP/nvim-navic",
             dependencies = "neovim/nvim-lspconfig"
         },
-
     },
     config = function()
         local lsp = require "lsp-zero"
