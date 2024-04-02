@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -xeo nounset
+
+if [[ -d ~/.config/nvim ]]; then
+    export PREV_NVIM_CFG_VERSION="~/.config/nvim.old.$(date +%Y%m%d%H%M%S)"
+    echo $PREV_NVIM_CFG_VERSION
+    mv ~/.config/nvim $PREV_NVIM_CFG_VERSION
+fi
+
+cp -r ./nvim ~/.config/nvim

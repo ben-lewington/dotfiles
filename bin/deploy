@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -xeo nounset
-
-if [[ -d ~/.config/nvim ]]; then
-    mv ~/.config/nvim ~/.config/nvim.old.$(date +"%Y%m%d%H%M%S")
-fi
-
-cp -r ./nvim ~/.config/nvim
