@@ -38,7 +38,7 @@ return {
             vim.keymap.set("n", "<CR>", api.node.open.edit, opts("bufedit"))
             vim.keymap.set("n", "l", api.node.open.edit, opts("bufedit"))
             vim.keymap.set("n", "o", api.node.open.edit, opts("bufedit"))
-            vim.keymap.set("n", "h", api.tree.close, opts("closedir"))
+            vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("closedir"))
 
         end,
         sort_by = "case_sensitive",
