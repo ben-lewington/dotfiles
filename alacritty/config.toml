@@ -6,4 +6,4 @@ resize_increments = true
 
 [font]
 normal = { family = "monospace", style = "Regular" }
-size = 10
+size = 11

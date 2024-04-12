@@ -6,3 +6,10 @@ here=$(pwd)
 sudo ln -sf $here/nvim                  ~/.config/nvim
 sudo ln -sf $here/tmux/conf             ~/.tmux.conf
 sudo ln -sf $here/alacritty/config.toml ~/.config/alacritty/alacritty.toml
+
+sudo ln -sf $here/swaywm/sway           ~/.config/sway
+sudo ln -sf $here/swaywm/swaylock       ~/.config/swaylock
+sudo ln -sf $here/swaywm/swaynag        ~/.config/swaynag
+sudo ln -sf $here/swaywm/waybar         ~/.config/waybar
+sudo ln -sf $here/swaywm/waypaper       ~/.config/waypaper
+sudo ln -sf $here/swaywm/wofi           ~/.config/wofi
