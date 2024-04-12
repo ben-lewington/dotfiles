@@ -3,5 +3,6 @@
 set -xeo nounset
 here=$(pwd)
 
-sudo ln -sf $here/nvim      ~/.config/nvim
-sudo ln -sf $here/tmux/conf ~/.tmux.conf
+sudo ln -sf $here/nvim                  ~/.config/nvim
+sudo ln -sf $here/tmux/conf             ~/.tmux.conf
+sudo ln -sf $here/alacritty/config.toml ~/.config/alacritty/alacritty.toml
