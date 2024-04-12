@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-docker="docker compose -f ./docker/compose.yml"
-
-set -xeo nounset
-
-$docker down -v --remove-orphans
-
-rm -r ../docker/nvim/.local/**/s*
