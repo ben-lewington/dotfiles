@@ -2,9 +2,10 @@
     "layer": "top",
     "position": "top",
     "height": 24,
-    "margin-left": 5,
-    "margin-right": 5,
-    "margin-top": 5,
+    "margin-left": 8,
+    "margin-right": 8,
+    "margin-top": 8,
+    "margin-bottom": 0,
     "modules-left": ["sway/workspaces"],
     "modules-center": [],
     "modules-right": ["network", "temperature", "cpu", "memory", "battery", "clock"],
@@ -42,14 +43,5 @@
     "network": {
         "format-wifi": "      {essid}",
         "format-disconnected": "⚠ Disconnected"
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "",
-        "format-icons": {
-            "headphones": "",
-            "default": ["", ""]
-        },
-        "on-click": "pavucontrol"
-    },
+    }
 }
