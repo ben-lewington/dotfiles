@@ -63,6 +63,7 @@ window#waybar {
 #network.disconnected {
   color: #b62d66;
 }
+
 #pulseaudio-slider slider {
     min-height: 0px;
     min-width: 0px;

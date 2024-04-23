@@ -8,7 +8,7 @@
     "margin-bottom": 0,
     "modules-left": ["sway/workspaces"],
     "modules-center": [],
-    "modules-right": ["network", "temperature", "cpu", "memory", "battery", "clock"],
+    "modules-right": ["pulseaudio", "network", "temperature", "cpu", "memory", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "disable-click": true,
@@ -43,5 +43,14 @@
     "network": {
         "format-wifi": "      {essid}",
         "format-disconnected": "⚠ Disconnected"
-    }
+    },
+    "pulseaudio": {
+        "format": "{icon}     {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
 }
