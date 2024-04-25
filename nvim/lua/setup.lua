@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 
+-- HACK (BL): wsl support
 if os.getenv('WSL_DISTRO_NAME') ~= nil then
     vim.g.clipboard = {
         name = "WslClipboard",

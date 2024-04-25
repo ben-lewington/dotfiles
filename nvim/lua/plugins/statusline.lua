@@ -4,6 +4,15 @@ local leaf = function(fq_path)
     return c:reverse()
 end
 
+
+local custom_theme = function()
+    local thm = require"lualine.themes.gruvbox"
+    local blue = "#83a598"
+
+    thm.normal.a.bg = blue
+    return thm
+end
+
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
@@ -14,14 +23,15 @@ return {
         },
     },
     config = function(_, opts)
-        require("lualine").setup(opts)
+        local l = require("lualine")
+        opts.theme = custom_theme()
+        l.setup(opts)
         vim.cmd [[ set laststatus=3 ]]
         vim.cmd [[ highlight WinSeparator guibg=None ]]
     end,
     opts = {
         options = {
             icons_enabled = true,
-            theme = "gruvbox",
             component_separators = { left = "", right = "" },
             section_separators = { left = "", right = "" },
             disabled_filetypes = {
@@ -56,9 +66,6 @@ return {
                 end,
                 function()
                     local buf = vim.api.nvim_get_current_buf()
-
-                    -- local cur_line = ""
-
                     return vim.api.nvim_buf_line_count(buf) .. "L"
                 end
             },
