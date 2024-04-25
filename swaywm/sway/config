@@ -13,6 +13,7 @@ set $left h
 set $down j
 set $up k
 set $right l
+
 set $screen_laptop  "Chimei Innolux Corporation 0x14C0 Unknown"
 set $screen_iiyama  "Iiyama North America PL2474H 0"
 set $screen_samsung "Samsung Electric Company LF24T35 HK2R301835"

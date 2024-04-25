@@ -1,21 +1,20 @@
 * {
+  font-family: "JetBrainsMono Nerd Font Mono";
   font-size: 13px;
   min-height: 0;
 }
 
 window#waybar {
-  /* background: transparent; */
-  /* background: black; */
   background: rgba(40, 44, 52, 0.85);
   color: white;
   border: 1px solid #8fd4ff;
-  border-radius: 6px;
+  border-radius: 2px;
 }
 
 #workspaces button.focused {
   color: white;
   border: 1px solid #8fd4ff;
-  border-radius: 6px;
+  border-radius: 2px;
 }
 
 #tray,

@@ -1,9 +1,9 @@
 live_config_reload = true
 
 [window]
-opacity = 0.80
+opacity = 0.95
 resize_increments = true
 
 [font]
-normal = { family = "monospace", style = "Regular" }
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
 size = 11
