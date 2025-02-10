@@ -47,6 +47,12 @@ return {
         { "i", "jj",        "<Esc>" },
         { "i", "jk",        "<Esc>" },
         { "i", "kj",        "<Esc>" },
+        -- TODO: fix this up
+        -- { "n", "<leader>r", function()
+        --     local cur = vim.api.nvim_win()
+        --     local lines = vim.api.nvim_buf_line_count(cur)
+        --     vim.cmd("resize " ..  lines)
+        -- end },
     },
     autocmds = {
         {
