@@ -7,23 +7,39 @@
     "margin-top": 8,
     "margin-bottom": 0,
     "modules-left": ["sway/workspaces"],
-    "modules-center": [],
+    "modules-center": ["custom/launcher", "custom/terminal", "custom/files"],
     "modules-right": ["pulseaudio", "network", "temperature", "cpu", "memory", "battery", "clock"],
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "disable-click": true,
-    },
     "tray": {
         "spacing": 10,
     },
     "clock": {
-        "format": "{:%Y-%m-%d   %H:%M}"
+        "format": "{:%Y-%m-%d   %H:%M   %Z}",
+        "tooltip-format": "Current Date and Time"
     },
     "cpu": {
         "format": "   {usage}%"
     },
     "memory": {
         "format": "   {}%"
+    },
+    "sway/workspaces": {
+        "on-click": "activate",
+        "disable-scroll": true
+    },
+    "custom/launcher": {
+        "format": "󱓞 ",
+        "on-click": "wofi --show=drun lines=6 --prompt=\"\"",
+        "tooltip-format": "Launch an application"
+    },
+    "custom/terminal": {
+        "format": "  ",
+        "on-click": "alacritty",
+        "tooltip-format": "Launch a terminal"
+    },
+    "custom/files": {
+        "format": " ",
+        "on-click": "thunar",
+        "tooltip-format": "Browse files"
     },
     "temperature": {
         "critical-threshold": 75,
@@ -42,10 +58,13 @@
     },
     "network": {
         "format-wifi": "      {essid}",
-        "format-disconnected": "⚠ Disconnected"
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "Launch network manager",
+        "on-click": "nm-connection-editor"
     },
     "pulseaudio": {
         "format": "{icon}     {volume}%",
+        "tooltip-format": "Launch audio control",
         "format-muted": "",
         "format-icons": {
             "headphones": "",

@@ -17,6 +17,13 @@ window#waybar {
   border-radius: 2px;
 }
 
+.modules-center {
+  color: white;
+  border: 1px solid #8fd4ff;
+  border-radius: 2px;
+  padding: 0rem 2rem;
+}
+
 #tray,
 #temperature,
 #clock,
@@ -28,6 +35,13 @@ window#waybar {
   padding: 0 1.25rem;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+#custom-terminal,
+#custom-launcher,
+#custom-files
+{
+  font-size: 27px;
 }
 
 #temperature.critical {
