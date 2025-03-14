@@ -1,47 +1,111 @@
 * {
   font-family: "JetBrainsMono Nerd Font Mono";
   font-size: 13px;
+  color: white;
   min-height: 0;
 }
 
+@keyframes blink {
+  to {
+    background-color: #8fd4ff;
+    color: black;
+  }
+}
+
 window#waybar {
-  background: rgba(40, 44, 52, 0.85);
+  background: rgba(9, 9, 9, 0.8);
   color: white;
   border: 1px solid #8fd4ff;
-  border-radius: 2px;
+  border-radius: 30px;
+}
+
+#workspaces button {
+  border: 1px solid #8fd4ff;
+  border-radius: 30px;
 }
 
 #workspaces button.focused {
-  color: white;
+  color: black;
   border: 1px solid #8fd4ff;
-  border-radius: 2px;
+  border-radius: 30px;
+  animation-name: blink;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#workspaces button.visible {
+  color: black;
+  border: 1px solid #8fd4ff;
+  border-radius: 30px;
 }
 
-.modules-center {
+.modules-center,
+.modules-left,
+.modules-right {
   color: white;
-  border: 1px solid #8fd4ff;
-  border-radius: 2px;
-  padding: 0rem 2rem;
 }
 
-#tray,
+#custom-files.icon {
+  color: red;
+}
+
+#custom-terminal {
+  font-size: 23px;
+  border: 1px solid #8fd4ff;
+  padding: 0rem 1rem;
+}
+
+#custom-launcher {
+  font-size: 23px;
+  border: 1px solid #8fd4ff;
+  border-radius: 30px 0px 0px 30px;
+  padding: 0rem 1rem;
+}
+
+#custom-files {
+  font-size: 23px;
+  border: 1px solid #8fd4ff;
+  border-radius: 0px 30px 30px 0px;
+  padding: 0rem 1rem;
+}
+
+#pulseaudio:hover,
+#network:hover,
+#temperature:hover,
+#cpu:hover,
+#memory:hover,
+#battery:hover,
+#clock:hover,
+#custom-terminal:hover,
+#custom-launcher:hover,
+#custom-files:hover {
+  animation-name: blink;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#pulseaudio {
+  border: 1px solid #8fd4ff;
+  border-radius: 30px 0px 0px 30px;
+  padding: 0rem 0.5rem;
+}
+
+#network,
 #temperature,
-#clock,
-#battery,
 #cpu,
 #memory,
-#network,
-#pulseaudio {
-  padding: 0 1.25rem;
-  margin-top: 5px;
-  margin-bottom: 5px;
+#battery {
+  border: 1px solid #8fd4ff;
+  padding: 0rem 0.5rem;
 }
 
-#custom-terminal,
-#custom-launcher,
-#custom-files
-{
-  font-size: 27px;
+#clock {
+  border: 1px solid #8fd4ff;
+  border-radius: 0px 30px 30px 0px;
+  padding: 0rem 0.5rem;
 }
 
 #temperature.critical {
@@ -56,13 +120,6 @@ window#waybar {
   border-bottom: 1px dotted #8fd4ff;
 }
 
-@keyframes blink {
-  to {
-    background-color: #8fd4ff;
-    color: black;
-  }
-}
-
 #battery.warning:not(.charging) {
   color: white;
   animation-name: blink;
@@ -75,24 +132,4 @@ window#waybar {
 
 #network.disconnected {
   color: #b62d66;
-}
-
-#pulseaudio-slider slider {
-    min-height: 0px;
-    min-width: 0px;
-    opacity: 0;
-    background-image: none;
-    border: none;
-    box-shadow: none;
-}
-#pulseaudio-slider trough {
-    min-height: 80px;
-    min-width: 10px;
-    border-radius: 5px;
-    background-color: black;
-}
-#pulseaudio-slider highlight {
-    min-width: 10px;
-    border-radius: 5px;
-    background-color: green;
 }

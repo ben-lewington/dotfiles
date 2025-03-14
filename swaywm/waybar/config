@@ -9,41 +9,39 @@
     "modules-left": ["sway/workspaces"],
     "modules-center": ["custom/launcher", "custom/terminal", "custom/files"],
     "modules-right": ["pulseaudio", "network", "temperature", "cpu", "memory", "battery", "clock"],
-    "tray": {
-        "spacing": 10,
-    },
     "clock": {
-        "format": "{:%Y-%m-%d   %H:%M   %Z}",
+        "format": "<span size=\"125%\"></span> {:%Y-%m-%d 󰥔 %H:%M}",
         "tooltip-format": "Current Date and Time"
     },
     "cpu": {
-        "format": "   {usage}%"
+        "format": "<span size=\"125%\"></span> {usage}%"
     },
     "memory": {
-        "format": "   {}%"
+        "format": "<span size=\"125%\"></span> {}%"
     },
     "sway/workspaces": {
         "on-click": "activate",
         "disable-scroll": true
     },
     "custom/launcher": {
-        "format": "󱓞 ",
+        "format": "<span size=\"125%\">󱓞</span>",
         "on-click": "wofi --show=drun lines=6 --prompt=\"\"",
         "tooltip-format": "Launch an application"
     },
     "custom/terminal": {
-        "format": "  ",
+        "format": "<span size=\"125%\"></span>",
         "on-click": "alacritty",
         "tooltip-format": "Launch a terminal"
     },
     "custom/files": {
-        "format": " ",
+        "format": "{icon}",
+        "format-icons": [""],
         "on-click": "thunar",
         "tooltip-format": "Browse files"
     },
     "temperature": {
         "critical-threshold": 75,
-        "format": " {temperatureC}°C"
+        "format": "<span size=\"125%\"></span> {temperatureC}°C"
     },
     "battery": {
         "bat": "BAT0",
@@ -53,17 +51,18 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}   {capacity}%",
+        "format": "<span size=\"125%\">{icon}</span> {capacity}%",
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "format-wifi": "      {essid}",
-        "format-disconnected": "⚠ Disconnected",
+        "format-wifi": "<span size=\"125%\"></span> {ifname}",
+        "format-ethernet": "<span size=\"125%\">󰈁</span> {ifname}",
+        "format-disconnected": "<span size=\"125%\">⚠</span> Disconnected",
         "tooltip-format": "Launch network manager",
         "on-click": "nm-connection-editor"
     },
     "pulseaudio": {
-        "format": "{icon}     {volume}%",
+        "format": "<span size=\"125%\">{icon}</span> {volume}%",
         "tooltip-format": "Launch audio control",
         "format-muted": "",
         "format-icons": {
@@ -73,3 +72,4 @@
         "on-click": "pavucontrol"
     },
 }
+
