@@ -14,10 +14,10 @@
         "tooltip-format": "Current Date and Time"
     },
     "cpu": {
-        "format": "<span size=\"125%\"></span> {usage}%"
+        "format": "<span size=\"125%\"></span> {usage}%"
     },
     "memory": {
-        "format": "<span size=\"125%\"></span> {}%"
+        "format": "<span size=\"125%\"></span> {}%"
     },
     "sway/workspaces": {
         "on-click": "activate",
@@ -72,4 +72,3 @@
         "on-click": "pavucontrol"
     },
 }
-

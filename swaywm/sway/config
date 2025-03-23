@@ -23,7 +23,10 @@ set $screen_acer    "Acer Technologies K242HYL TBNEE0038551"
 set $term alacritty
 # Your preferred application launcher
 set $menu wofi --show=drun lines=6 --prompt=""
+
 default_border pixel 2
+client.focused #000000 #000000 #000000 #000000 #000000
+
 gaps inner 8
 
 ### Output configuration
@@ -71,7 +74,9 @@ exec swayidle -w \
 bindsym $mod+Return exec $term
 # Kill focused window
 bindsym $mod+Shift+q kill
-# Start your launcher
+# zooming tool woomer
+bindsym $mod+z exec woomer
+
 bindsym $mod+d exec $menu
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -180,22 +185,22 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-corner_radius 10
+corner_radius 7
 shadows enable
 shadow_blur_radius 5
-shadow_color #FFFFFFFF
+shadow_color #8fd4ff
 shadow_offset 0 0
-blur_passes 10
-blur_radius 10
-blur_noise 1
+blur_passes 2
+blur_radius 2
+blur_noise 0.5
 blur_brightness 2
-blur_contrast 2
+blur_contrast 1.5
 blur_saturation 2
 
 layer_effects "waybar" {
-    blur enable
+    # blur enable
     blur_xray enable
-    corner_radius 18
+    corner_radius 20
     shadows enable
 }
 

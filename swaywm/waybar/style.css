@@ -13,21 +13,19 @@
 }
 
 window#waybar {
-  background: rgba(9, 9, 9, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   color: white;
   border: 1px solid #8fd4ff;
-  border-radius: 30px;
+  border-radius: 30px 30px 30px 30px;
 }
 
 #workspaces button {
-  border: 1px solid #8fd4ff;
-  border-radius: 30px;
+  /* border: 1px solid #8fd4ff; */
 }
 
 #workspaces button.focused {
   color: black;
   border: 1px solid #8fd4ff;
-  border-radius: 30px;
   animation-name: blink;
   animation-duration: 10s;
   animation-timing-function: linear;
@@ -37,7 +35,6 @@ window#waybar {
 #workspaces button.visible {
   color: black;
   border: 1px solid #8fd4ff;
-  border-radius: 30px;
 }
 
 .modules-center,
@@ -46,28 +43,29 @@ window#waybar {
   color: white;
 }
 
-#custom-files.icon {
-  color: red;
+.modules-center {
+  font-size: 23px;
+  border: 1px solid #ffffff;
+  border-radius: 30px;
 }
 
-#custom-terminal {
+.modules-center * {
   font-size: 23px;
-  border: 1px solid #8fd4ff;
-  padding: 0rem 1rem;
-}
-
-#custom-launcher {
-  font-size: 23px;
-  border: 1px solid #8fd4ff;
-  border-radius: 30px 0px 0px 30px;
   padding: 0rem 1rem;
 }
 
 #custom-files {
-  font-size: 23px;
-  border: 1px solid #8fd4ff;
-  border-radius: 0px 30px 30px 0px;
-  padding: 0rem 1rem;
+  border-radius: 0px 31px 31px 0px;
+}
+
+#custom-terminal {
+}
+
+#custom-launcher {
+  border-radius: 31px 0px 0px 31px;
+}
+
+#custom-files {
 }
 
 #pulseaudio:hover,
