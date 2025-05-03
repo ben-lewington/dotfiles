@@ -5,7 +5,7 @@
     home.homeDirectory = "/home/ben";
 
     home.packages = with pkgs; [
-        alacritty
+        ghostty
         tmux
         git
         htop
@@ -26,21 +26,21 @@
         } ];
     };
 
-    programs.alacritty = {
+    programs.ghostty = {
         enable = true;
         settings = {
-            general.live_config_reload = true;
-
-            window.opacity = 0.85;
-            window.resize_increments = true;
-            font.normal = {
-                family = "JetBrainsMono Nerd Font Mono";
-                style = "Regular";
-            };
-            font.size = 9.5;
+            font-size = 9;
+            font-synthetic-style = false;
+            alpha-blending = "linear-corrected";
+            adjust-cell-width = "20%";
+            adjust-cell-height = "8%";
+            background-opacity = 0.90;
+            theme = "Monokai Pro";
+            keybind= "ctrl+shift+i=unbind";
+            cursor-opacity = 0.50;
         };
     };
 
-    # programs.home-manager.enable = true;
+    programs.home-manager.enable = true;
     home.stateVersion = "24.11";
 }

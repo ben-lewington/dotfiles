@@ -6,7 +6,6 @@
         ./pc.nix
         ./zsh.nix
         ./containers.nix
-        <home-manager/nixos>
     ];
 
     boot.loader = {
@@ -19,7 +18,6 @@
     environment.systemPackages = with pkgs; [
         neovim
         tmux
-        home-manager
         git
         wget
         google-chrome

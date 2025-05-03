@@ -3,15 +3,18 @@
     programs.neovim = {
         enable = true;
         extraPackages = with pkgs; [
-            emmet-ls
             pyright
             rust-analyzer
+            astro-language-server
             typescript-language-server
             nil
             zls
             lua-language-server
+            tailwindcss-language-server
+            emmet-language-server
             nodePackages.vscode-json-languageserver
             yaml-language-server
+            terraform-ls
             lua
             stylua
             ripgrep
@@ -50,6 +53,7 @@
                 nvim-treesitter-textobjects
                 nvim-ts-autotag
                 nvim-ts-context-commentstring
+                tailwindcss-colors-nvim
 
                 { name = "mini.ai"; path = mini-nvim; }
                 { name = "mini.bufremove"; path = mini-nvim; }
@@ -127,7 +131,7 @@
                 end
             end
 
-            lsp.on_attach(function(client, bufnr)
+            lsp.on_attach = function(client, bufnr)
                 local opts = { buffer = bufnr, remap = false }
                 lsp_keymaps(
                     {
@@ -146,8 +150,9 @@
                     },
                     opts
                 )
-                pcall(require("nvim-navic").attach, client, bufnr)
-            end)
+
+                require("tailwindcss-colors").buf_attach(bufnr)
+            end
         end
 
         local setup_completion = function(lsp)
@@ -186,6 +191,11 @@
             lspconf.rust_analyzer.setup{}
             lspconf.zls.setup{}
             lspconf.nil_ls.setup{}
+            lspconf.astro.setup{}
+            lspconf.ts_ls.setup{}
+            lspconf.tailwindcss.setup{}
+            lspconf.terraformls.setup{}
+            lspconf.emmet_language_server.setup{}
         end
 
         local run_setup = function(s, d)
@@ -787,12 +797,15 @@
         pkgs.symlinkJoin {
             name = "treesitter-parsers";
             paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
+                astro
                 c
                 lua
                 python
                 rust
                 nix
                 zig
+                css
+                javascript
             ])).dependencies;
         };
     in "${parsers}/parser";

@@ -19,13 +19,19 @@ set $screen_laptop  "Chimei Innolux Corporation 0x14C0 Unknown"
 set $screen_iiyama  "Iiyama North America PL2474H 0"
 set $screen_samsung "Samsung Electric Company LF24T35 HK2R301835"
 set $screen_acer    "Acer Technologies K242HYL TBNEE0038551"
+set $screen_louis   "Acer Technologies G277HU T1UEE0018500"
 # Your preferred terminal emulator
-set $term alacritty
+set $term ghostty
 # Your preferred application launcher
 set $menu wofi --show=drun lines=6 --prompt=""
 
 default_border pixel 2
-client.focused #000000 #000000 #000000 #000000 #000000
+set $bl #8fd4ff
+# class                 border  backgr. text    indicator child_border
+client.focused          $bl     $bl     $bl     $bl       $bl
+#client.unfocused       $bg     $bg     $fg     $bg       $bg
+#client.urgent          $br     $br     $fg     $bg       $br #currently not implemented
+#client.placeholder     $br     $br     $fg     $bg       $br #currently not implemented
 
 gaps inner 8
 
@@ -48,25 +54,25 @@ output $screen_samsung position 0 0 res 1920x1080
 output $screen_iiyama position 1920 0 res 1920x1080 transform 270
 output $screen_laptop position 0 1080 res 1920x1080
 
-#   France setup
-# ---------------
-# |             |
-# |    Acer     |
-# |             |
-# ---------------
-#   | laptop |
-#   ----------
-# output $screen_acer position 0 0 res 1920x1080
-# output $screen_laptop position 0 1080 res 1920x1080
+# -------  France setup
+# |     |---------------
+# |  A  ||             |
+# |  c  ||    Louis    |
+# |  e  ||             |
+# |  r  |---------------
+# |     |
+# ------
+output $screen_louis position 1080 0 res 2560x1440
+output $screen_acer  position 0 0 res 1920x1080 transform 90
 
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-exec swayidle -w \
-    timeout 600 'swaylock -f -c 000000' \
-    timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -f -c 000000'
+# exec swayidle -w \
+#     timeout 600 'swaylock -f -c 000000' \
+#     timeout 1200 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#     before-sleep 'swaylock -f -c 000000'
 
 ### Key bindings
 ## General

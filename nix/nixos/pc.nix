@@ -28,7 +28,7 @@
     services.xserver.xkb = {
         layout = "gb";
         variant = "";
-        option = "grp:alts_toggle";
+        options = "grp:alts_toggle";
     };
 
     # Configure console keymap

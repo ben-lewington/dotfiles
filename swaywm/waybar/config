@@ -7,8 +7,19 @@
     "margin-top": 8,
     "margin-bottom": 0,
     "modules-left": ["sway/workspaces"],
-    "modules-center": ["custom/launcher", "custom/terminal", "custom/files"],
-    "modules-right": ["pulseaudio", "network", "temperature", "cpu", "memory", "battery", "clock"],
+    "modules-center": [
+        "custom/launcher",
+        "custom/terminal",
+        "custom/files"],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "temperature",
+        "cpu",
+        "memory",
+        "battery",
+        "clock"
+    ],
     "clock": {
         "format": "<span size=\"125%\"></span> {:%Y-%m-%d 󰥔 %H:%M}",
         "tooltip-format": "Current Date and Time"
@@ -30,7 +41,7 @@
     },
     "custom/terminal": {
         "format": "<span size=\"125%\"></span>",
-        "on-click": "alacritty",
+        "on-click": "ghostty",
         "tooltip-format": "Launch a terminal"
     },
     "custom/files": {

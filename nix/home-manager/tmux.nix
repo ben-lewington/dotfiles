@@ -23,25 +23,12 @@
           }
           copycat
           cpu
-          {
-            plugin = resurrect;
-            extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-          }
-          {
-            plugin = continuum;
-            extraConfig = ''
-                set -g @continuum-restore 'on'
-                set -g @continuum-save-interval '1' # minutes
-            '';
-          }
         ];
 
         extraConfig = ''
-            # mouse support
-            set -g mouse on
+            set -g mouse off
             set -s escape-time 10                     # faster command sequences
             set -sg repeat-time 1000                   # increase repeat timeout
-            bind -n MouseDrag1Status swap-window -t=
 
             # split panes with C-v (vertical split), C-s (horizontal split)
             bind e split-window -v -c "#{pane_current_path}"
@@ -87,8 +74,8 @@
             set -g visual-bell off
 
             # appearance settings
-            set -g pane-border-style fg="#555555",bg=default
-            set -g pane-active-border-style fg="#ffffff",bg=default
+            set -g pane-border-style fg="#8fd4ff",bg=default
+            set -g pane-active-border-style fg="#8fd4ff",bg=default
             set -g status on
             set -g status-interval 1
             set -g status-justify "left"
@@ -97,9 +84,9 @@
             set -g status-left ""
             set -g status-right "#h"
             set -g status-position bottom
-            set -g status-style bg=default,fg="#ffffff"
-            setw -g window-status-format "#[bg=#555555, fg=#ffffff, noreverse] #I #W "
-            setw -g window-status-current-format "#[bg=#ffffff, fg=#000000, noreverse] #I #W "
+            set -g status-style bg=default,fg="#8fd4ff"
+            setw -g window-status-format "#[bg=#555555, fg=#8fd4ff, noreverse] #I #W "
+            setw -g window-status-current-format "#[bg=#8fd4ff, fg=#000000, noreverse] #I #W "
             setw -g window-status-separator " "
             setw -g window-status-bell-style fg=red,bg=default,none
             setw -g window-status-activity-style fg=cyan,bg=default,bold
