@@ -7,6 +7,7 @@
             enable = true;
             wifi.backend = "iwd";
         };
+        firewall.allowedTCPPorts = [ 4321 ];
     };
     time.timeZone = "Europe/London";
 

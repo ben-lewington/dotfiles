@@ -1,6 +1,11 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+let
+    parallelLauncherFlake = builtins.getFlake "path:/home/ben/parallel-launcher";
+in
+{
     imports = [ ./nvim.nix  ./tmux.nix ];
     home.username = "ben";
+
 
     home.homeDirectory = "/home/ben";
 
@@ -9,13 +14,17 @@
         tmux
         git
         htop
+        parallelLauncherFlake.packages.${pkgs.system}.default
     ];
 
     programs.git = {
         enable = true;
         userName = "Ben Lewington";
         userEmail = "ben.lewington1991@gmail.com";
-        extraConfig = { core = { sshCommand = "ssh -i ~/.ssh/id_ed25519"; }; };
+        extraConfig = {
+            core = { sshCommand = "ssh -i ~/.ssh/id_ed25519"; };
+            init.defaultBranch = "main";
+        };
 
         includes = [ {
             contents = {
@@ -36,7 +45,7 @@
             adjust-cell-height = "8%";
             background-opacity = 0.90;
             theme = "Monokai Pro";
-            keybind= "ctrl+shift+i=unbind";
+            keybind = "ctrl+shift+i=unbind";
             cursor-opacity = 0.50;
         };
     };
