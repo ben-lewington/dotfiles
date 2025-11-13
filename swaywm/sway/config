@@ -20,6 +20,7 @@ set $screen_iiyama  "Iiyama North America PL2474H 0"
 set $screen_samsung "Samsung Electric Company LF24T35 HK2R301835"
 set $screen_acer    "Acer Technologies K242HYL TBNEE0038551"
 set $screen_louis   "Acer Technologies G277HU T1UEE0018500"
+set $screen_aoc     "AOC 24G15N AP15423Z01096"
 # Your preferred terminal emulator
 set $term ghostty
 # Your preferred application launcher
@@ -51,7 +52,7 @@ gaps inner 8
 #   | laptop |    ------
 #   ----------
 output $screen_samsung position 0 0 res 1920x1080
-output $screen_iiyama position 1920 0 res 1920x1080 transform 270
+output $screen_aoc position 1920 0 res 1920x1080 transform 270
 output $screen_laptop position 0 1080 res 1920x1080
 
 # -------  France setup
@@ -120,6 +121,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+v exec swaylock
+bindsym $mod+y exec grim -g "$(slurp)" - | wl-copy
 #
 # Workspaces:
 #

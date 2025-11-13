@@ -4,23 +4,23 @@ let
 in
 {
     imports = [ ./nvim.nix  ./tmux.nix ];
-    home.username = "ben";
 
-
-    home.homeDirectory = "/home/ben";
-
-    home.packages = with pkgs; [
-        ghostty
-        tmux
-        git
-        htop
-        parallelLauncherFlake.packages.${pkgs.system}.default
-    ];
+    home = {
+        username = "ben";
+        homeDirectory = "/home/ben";
+        packages = with pkgs; [
+            ghostty
+            tmux
+            git
+            htop
+            parallelLauncherFlake.packages.${pkgs.system}.default
+        ];
+    };
 
     programs.git = {
         enable = true;
         userName = "Ben Lewington";
-        userEmail = "ben.lewington1991@gmail.com";
+        userEmail = "ben.lewington91@ntlworld.com";
         extraConfig = {
             core = { sshCommand = "ssh -i ~/.ssh/id_ed25519"; };
             init.defaultBranch = "main";

@@ -56,6 +56,7 @@
                 nvim-ts-context-commentstring
                 tailwindcss-colors-nvim
                 tailwind-tools-nvim
+                vim-dadbod
 
                 { name = "mini.ai"; path = mini-nvim; }
                 { name = "mini.bufremove"; path = mini-nvim; }
