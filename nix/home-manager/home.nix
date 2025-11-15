@@ -26,6 +26,10 @@ in
             init.defaultBranch = "main";
         };
 
+        aliases = {
+            lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+        };
+
         includes = [ {
             contents = {
                 user = { email = "ben@addit.ai"; };
