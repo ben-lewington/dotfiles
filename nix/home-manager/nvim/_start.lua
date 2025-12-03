@@ -30,7 +30,8 @@ for opt, v in pairs({
 end
 for _, tbl in pairs({
     { "v", "J",         ":m \">+1<CR>gv=gv" },
-    { "v", "K",         ":m \"<-2<CR>gv=gv" }, { "n", "J",         "mzJ`z" },
+    { "v", "K",         ":m \"<-2<CR>gv=gv" },
+    { "n", "J",         "mzJ`z" },
     { "n", "<C-d>",     "<C-d>zz" },
     { "n", "<C-u>",     "<C-u>J`z" },
     { "n", "n",         "nzzzv" },
@@ -42,12 +43,11 @@ for _, tbl in pairs({
     { "n", "<leader>f", vim.lsp.buf.format },
     { "n", "<C-k>",     "<cmd>cnext<Cr>zz" },
     { "n", "<C-j>",     "<cmd>cprev<Cr>zz" },
-    { "n", "<leader>k", "<cmd>lnextCr>zz" },
+    { "n", "<leader>k", "<cmd>lnext<Cr>zz" },
     { "n", "<leader>j", "<cmd>lprev<Cr>zz" },
     { "n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>" },
     { "n", "<C-s>",     ":w!<cr>" },
     { "i", "<C-s>",     "<Esc>:w!<cr>i" },
-    { "n", "<C-x>",     ":wqall!<cr>" },
     { "i", "jj",        "<Esc>" },
     { "i", "jk",        "<Esc>" },
     { "i", "kj",        "<Esc>" },
