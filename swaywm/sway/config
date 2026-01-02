@@ -64,7 +64,7 @@ output $screen_laptop position 0 1080 res 1920x1080
 # |     |
 # ------
 output $screen_louis position 1080 0 res 2560x1440
-output $screen_acer  position 0 0 res 1920x1080 transform 90
+output $screen_acer  position 0 0 res 1920x1080 transform 0
 
 
 # This will lock your screen after 300 seconds of inactivity, then turn off

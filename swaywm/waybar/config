@@ -10,7 +10,8 @@
     "modules-center": [
         "custom/launcher",
         "custom/terminal",
-        "custom/files"],
+        "custom/files"
+    ],
     "modules-right": [
         "pulseaudio",
         "network",

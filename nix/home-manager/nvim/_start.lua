@@ -33,7 +33,7 @@ for _, tbl in pairs({
     { "v", "K",         ":m \"<-2<CR>gv=gv" },
     { "n", "J",         "mzJ`z" },
     { "n", "<C-d>",     "<C-d>zz" },
-    { "n", "<C-u>",     "<C-u>J`z" },
+    { "n", "<C-u>",     "<C-u>zz" },
     { "n", "n",         "nzzzv" },
     { "n", "N",         "Nzzzv" },
     { "x", "<leader>p", "\"_dP" },
@@ -47,10 +47,6 @@ for _, tbl in pairs({
     { "n", "<leader>j", "<cmd>lprev<Cr>zz" },
     { "n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>" },
     { "n", "<C-s>",     ":w!<cr>" },
-    { "i", "<C-s>",     "<Esc>:w!<cr>i" },
-    { "i", "jj",        "<Esc>" },
-    { "i", "jk",        "<Esc>" },
-    { "i", "kj",        "<Esc>" },
     -- TODO: fix this up
     -- { "n", "<leader>r", function()
     --     local cur = vim.api.nvim_win()
@@ -116,7 +112,7 @@ for _, plugin in pairs({
     "bugreport",
     "ftplugin",
 }) do
-  vim.g["loaded_" .. plugin] = 1
+    vim.g["loaded_" .. plugin] = 1
 end
 
 for _, cmd in pairs({
