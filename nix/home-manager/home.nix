@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-    imports = [ ./nvim.nix  ./tmux.nix ];
+    imports = [ ./nvim.nix  ./tmux.nix  ./zellij.nix ];
 
     home = {
         username = "ben";
@@ -46,6 +46,9 @@
             theme = "Monokai Pro";
             keybind = "ctrl+shift+i=unbind";
             cursor-opacity = 0.50;
+            cursor-style = "block";
+            cursor-style-blink = false;
+            shell-integration-features = "no-cursor";
         };
     };
 

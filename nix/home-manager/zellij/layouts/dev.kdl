@@ -1,0 +1,20 @@
+// Tab-level dev layout (pane arrangement only, no tab wrapper)
+// Used by the Ctrl-a D keybinding via NewTab { layout "dev" }
+
+layout {
+    pane_template name="nix" command="nix-shell" {
+        args "--run" "zsh"
+    }
+
+    pane split_direction="vertical" {
+        nix size="65%" focus=true
+        pane size="35%" {
+            nix
+            nix
+        }
+    }
+
+    pane size=1 borderless=true {
+        plugin location="zellij:compact-bar"
+    }
+}
