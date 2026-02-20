@@ -253,7 +253,7 @@ return {
 
             local l = require("lualine")
 
-            opts.theme = custom_theme()
+            opts.options.theme = custom_theme()
             l.setup(opts)
             vim.cmd [[ set laststatus=3 ]]
             vim.cmd [[ highlight WinSeparator guibg=None ]]
