@@ -69,6 +69,17 @@ for _, cmd in ipairs({
             group = "RemoveTrailingWhitespace"
         }
     },
+    {
+        "ContainerfileFiletype",
+        { "BufRead", "BufNewFile" },
+        {
+            pattern = { "Containerfile", "*.Containerfile" },
+            callback = function()
+                vim.bo.filetype = "dockerfile"
+            end,
+            group = "ContainerfileFiletype"
+        }
+    },
 }) do
     utils.nvim_create_au(unpack(cmd))
 end

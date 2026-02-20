@@ -1,7 +1,4 @@
 { config, pkgs, ... }:
-let
-    parallelLauncherFlake = builtins.getFlake "path:/home/ben/parallel-launcher";
-in
 {
     imports = [ ./nvim.nix  ./tmux.nix ];
 
@@ -13,7 +10,6 @@ in
             tmux
             git
             htop
-            parallelLauncherFlake.packages.${pkgs.system}.default
         ];
     };
 
