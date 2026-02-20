@@ -244,17 +244,16 @@ return {
             },
         },
         config = function(_, opts)
-            local custom_theme = function()
-                local thm = require"lualine.themes.gruvbox"
-                local blue = "#83a598"
-                thm.normal.a.bg = blue
-                return thm
+            local theme = require("lualine.themes.base16")
+            local c_bg = "#272822"
+            for _, mode in pairs(theme) do
+                if type(mode) == "table" then
+                    mode.c = mode.c or {}
+                    mode.c.bg = mode.c.bg or c_bg
+                end
             end
-
-            local l = require("lualine")
-
-            opts.options.theme = custom_theme()
-            l.setup(opts)
+            opts.options.theme = theme
+            require("lualine").setup(opts)
             vim.cmd [[ set laststatus=3 ]]
             vim.cmd [[ highlight WinSeparator guibg=None ]]
         end,
