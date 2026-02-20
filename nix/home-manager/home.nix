@@ -15,15 +15,14 @@
 
     programs.git = {
         enable = true;
-        userName = "Ben Lewington";
-        userEmail = "ben.lewington91@ntlworld.com";
-        extraConfig = {
-            core = { sshCommand = "ssh -i ~/.ssh/id_ed25519"; };
+        settings = {
+            user = {
+                name = "Ben Lewington";
+                email = "ben.lewington91@ntlworld.com";
+            };
+            core.sshCommand = "ssh -i ~/.ssh/id_ed25519";
             init.defaultBranch = "main";
-        };
-
-        aliases = {
-            lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+            alias.lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
         };
 
         includes = [ {

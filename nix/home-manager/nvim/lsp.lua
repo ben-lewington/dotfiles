@@ -27,33 +27,23 @@ cmp.setup({
   })
 })
 
--- LSP keymaps and capabilities
-local on_attach = function(client, bufnr)
-    local opts = { buffer = bufnr, remap = false }
+-- LSP keymaps on attach (gd, K, grn, gra, grr are now nvim 0.11 defaults)
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local opts = { buffer = args.buf, remap = false }
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+    vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+  end,
+})
 
-    local keymaps = {
-        { "gd",          vim.lsp.buf.definition },
-        { "gr",          vim.lsp.buf.references },
-        { "K",           vim.lsp.buf.hover },
-        { "<leader>vws", vim.lsp.buf.workspace_symbol },
-        { "<leader>vd",  vim.diagnostic.open_float },
-        { "[d",          vim.diagnostic.goto_next },
-        { "]d",          vim.diagnostic.goto_prev },
-        { "<leader>vca", vim.lsp.buf.code_action },
-        { "<leader>vrr", vim.lsp.buf.references },
-        { "<leader>vrn", vim.lsp.buf.rename },
-        { "<C-b>",       "<cmd>LspStop<CR><cmd>LspStart<CR>" },
-        { "<C-h>",       vim.lsp.buf.signature_help, "i" },
-    }
+-- Enable LSP servers (configs provided by nvim-lspconfig plugin)
+vim.lsp.config('*', {
+  root_markers = { '.git' },
+})
 
-    for _, k in ipairs(keymaps) do
-        vim.keymap.set(k[3] or "n", k[1], k[2], opts)
-    end
-end
-
--- LSP servers setup
-local lspconfig = require("lspconfig")
-local servers = {
+vim.lsp.enable({
   "pyright",
   "lua_ls",
   "rust_analyzer",
@@ -64,12 +54,4 @@ local servers = {
   "tailwindcss",
   "terraformls",
   "emmet_language_server",
-}
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-for _, server in ipairs(servers) do
-  lspconfig[server].setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-  })
-end
+})

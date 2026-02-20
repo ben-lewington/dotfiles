@@ -25,7 +25,6 @@
 
         extraLuaConfig =
             let plugins = with pkgs.vimPlugins; [
-                avante-nvim
                 undotree
                 comment-nvim
                 align-nvim
@@ -33,10 +32,8 @@
                 base16-nvim
                 gitsigns-nvim
                 vim-fugitive
-                lsp-zero-nvim
                 nvim-lspconfig
                 luasnip
-                neodev-nvim
                 nvim-cmp
                 cmp-buffer
                 cmp-path
