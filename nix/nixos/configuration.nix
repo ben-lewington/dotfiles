@@ -60,6 +60,6 @@
       };
     };
 
-    # man configuration.nix / https://nixos.org/nixos/options.html
+    # KEEP man configuration.nix / https://nixos.org/nixos/options.html
     system.stateVersion = "23.05";
 }

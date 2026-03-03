@@ -3,29 +3,42 @@
         grim
         slurp
         woomer
+        wl-clipboard
+        mako
+        wofi
+        waypaper
+        swaylock
+        swww
+        waybar
+        pavucontrol
+        xfce.thunar
+        networkmanagerapplet
     ];
 
-    programs.sway = {
-        enable = true;
-        package = pkgs.swayfx;
-        wrapperFeatures.gtk = true;
+    programs.hyprland.enable = true;
+    xdg.configFile."hypr/hyprland.conf".source = ../../hyprland/hyprland.conf;
 
-        extraPackages = with pkgs; [
-            grim
-            slurp
-            wl-clipboard
-            mako
-            wofi
-            waypaper
-            swayidle
-            swaylock
-            swww
-            waybar
-            pavucontrol
-            xfce.thunar
-            networkmanagerapplet
-        ];
-    };
+    # programs.sway = {
+    #     enable = true;
+    #     package = pkgs.swayfx;
+    #     wrapperFeatures.gtk = true;
+    #
+    #     extraPackages = with pkgs; [
+    #         grim
+    #         slurp
+    #         wl-clipboard
+    #         mako
+    #         wofi
+    #         waypaper
+    #         swayidle
+    #         swaylock
+    #         swww
+    #         waybar
+    #         pavucontrol
+    #         xfce.thunar
+    #         networkmanagerapplet
+    #     ];
+    # };
 
     services = {
         gnome.gnome-keyring.enable = true;

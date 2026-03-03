@@ -52,6 +52,14 @@
         };
     };
 
+
+    # Optional, hint Electron apps to use Wayland:
+    home.sessionVariables.NIXOS_OZONE_WL = "1";
+    wayland.windowManager.hyprland = {
+        enable = true;
+    };
+    xdg.configFile."hypr/hyprland.conf".source = ./hyprland/hyprland.conf;
+
     programs.home-manager.enable = true;
     home.stateVersion = "24.11";
 }
