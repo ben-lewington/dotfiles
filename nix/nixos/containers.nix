@@ -1,20 +1,20 @@
 { pkgs, ... }:
 {
-    environment.systemPackages = with pkgs; [ podman-compose ];
+  environment.systemPackages = with pkgs; [ podman-compose ];
 
-    virtualisation = {
-        containers = {
-            enable = true;
-            containersConf.settings = {
-                engine = {
-                    compose_warning_logs = false;
-                };
-            };
+  virtualisation = {
+    containers = {
+      enable = true;
+      containersConf.settings = {
+        engine = {
+          compose_warning_logs = false;
         };
-        podman = {
-            enable = true;
-            dockerCompat = true;
-            defaultNetwork.settings.dns_enabled = true;
-        };
+      };
     };
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 }

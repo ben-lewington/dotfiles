@@ -15,21 +15,6 @@ return {
     -- disable mason.nvim, use programs.neovim.extraPackages
     { "williamboman/mason-lspconfig.nvim", enabled = false },
     { "williamboman/mason.nvim", enabled = false },
-    -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
-    {
-        "nvim-treesitter/nvim-treesitter",
-        lazy = false,
-        config = function(_, opts)
-            require("nvim-treesitter.configs").setup(opts)
-        end,
-        opts = {
-            ensure_installed = {},
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-        }
-    },
     {
         "mbbill/undotree",
         keys = { { "<leader>u", vim.cmd.UndotreeToggle }, },
@@ -102,16 +87,6 @@ return {
         dependencies = {
             "rafamadriz/friendly-snippets"
         },
-    },
-    {
-        "luckasRanarison/tailwind-tools.nvim",
-        name = "tailwind-tools",
-        build = ":UpdateRemotePlugins",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-telescope/telescope.nvim", -- optional
-        },
-        opts = {} -- your configuration
     },
     { "SmiteshP/nvim-navic" },
     {

@@ -131,9 +131,17 @@ for _, cmd in pairs({
         "ColorsTrans",
         function(opts)
             utils.colorscheme_transparent(opts.fargs[1])
+            link_modern_treesitter_captures()
         end,
         { nargs = 1 }
     },
 }) do
     vim.api.nvim_create_user_command(unpack(cmd))
 end
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'python',
+    callback = function (args)
+        vim.treesitter.start()
+    end
+})
