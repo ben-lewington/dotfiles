@@ -22,6 +22,9 @@
     wget
     google-chrome
     brave
+    home-manager
+    hyprwhspr-rs
+    whisper-cpp
   ];
 
   users = {
@@ -31,6 +34,7 @@
       extraGroups = [
         "networkmanager"
         "wheel"
+        "input"
       ];
     };
     defaultUserShell = pkgs.zsh;
@@ -72,6 +76,17 @@
     curl
     glibc
   ];
+
+  services.hyprwhspr-rs = {
+    enable = true;
+    package = pkgs.hyprwhspr-rs.override {
+      # to optimize build time you can skip enabling cudaSupport for one of these two
+      # for whisper do whisper-cpp, for NVIDIA Parakeet do onnxruntime
+      whisper-cpp = pkgs.whisper-cpp.override { rocmSupport = true; };
+      onnxruntime = pkgs.onnxruntime.override { rocmSupport = true; };
+    };
+    environmentFile = "/path/to/hyprwhspr_secret_file";
+  };
 
   # KEEP man configuration.nix / https://nixos.org/nixos/options.html
   system.stateVersion = "23.05";

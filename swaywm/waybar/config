@@ -1,86 +1,108 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 24,
-    "margin-left": 8,
-    "margin-right": 8,
-    "margin-top": 8,
-    "margin-bottom": 0,
-    "modules-left": ["sway/workspaces"],
-    "modules-center": [
-        "custom/launcher",
-        "custom/terminal",
-        "custom/files"
+  "battery": {
+    "bat": "BAT0",
+    "format": "<span size=\"125%\">{icon}</span> {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
     ],
-    "modules-right": [
-        "pulseaudio",
-        "network",
-        "temperature",
-        "cpu",
-        "memory",
-        "battery",
-        "clock"
+    "full-at": 95,
+    "states": {
+      "critical": 15,
+      "good": 95,
+      "warning": 30
+    }
+  },
+  "clock": {
+    "format": "<span size=\"125%\"></span> {:%Y-%m-%d 󰥔 %H:%M}",
+    "tooltip-format": "Current Date and Time"
+  },
+  "cpu": {
+    "format": "<span size=\"125%\"></span> {usage}%"
+  },
+  "custom/files": {
+    "format": "{icon}",
+    "format-icons": [
+      ""
     ],
-    "clock": {
-        "format": "<span size=\"125%\"></span> {:%Y-%m-%d 󰥔 %H:%M}",
-        "tooltip-format": "Current Date and Time"
+    "on-click": "thunar",
+    "tooltip-format": "Browse files"
+  },
+  "custom/hyprwhspr": {
+    "exec": "cat ${XDG_CACHE_HOME:-$HOME/.cache}/hyprwhspr-rs/status.json 2>/dev/null || echo '{\"text\":\"󰍭\",\"class\":\"inactive\",\"tooltip\":\"Not running\"}'",
+    "format": "{text}",
+    "interval": 1,
+    "on-click": "walker --provider menus:hyprwhspr",
+    "return-type": "json",
+    "tooltip": true
+  },
+  "custom/launcher": {
+    "format": "<span size=\"125%\">󱓞</span>",
+    "on-click": "wofi --show=drun lines=6 --prompt=\"\"",
+    "tooltip-format": "Launch an application"
+  },
+  "custom/terminal": {
+    "format": "<span size=\"125%\"></span>",
+    "on-click": "ghostty",
+    "tooltip-format": "Launch a terminal"
+  },
+  "height": 24,
+  "layer": "top",
+  "margin-bottom": 0,
+  "margin-left": 8,
+  "margin-right": 8,
+  "margin-top": 8,
+  "memory": {
+    "format": "<span size=\"125%\"></span> {}%"
+  },
+  "modules-center": [
+    "custom/launcher",
+    "custom/terminal",
+    "custom/files"
+  ],
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "custom/hyprwhspr",
+    "pulseaudio",
+    "network",
+    "temperature",
+    "cpu",
+    "memory",
+    "battery",
+    "clock"
+  ],
+  "network": {
+    "format-disconnected": "<span size=\"125%\">⚠</span> Disconnected",
+    "format-ethernet": "<span size=\"125%\">󰈁</span> {ifname}",
+    "format-wifi": "<span size=\"125%\"></span> {ifname}",
+    "on-click": "nm-connection-editor",
+    "tooltip-format": "Launch network manager"
+  },
+  "position": "top",
+  "pulseaudio": {
+    "format": "<span size=\"125%\">{icon}</span> {volume}%",
+    "format-icons": {
+      "default": [
+        "",
+        ""
+      ],
+      "headphones": ""
     },
-    "cpu": {
-        "format": "<span size=\"125%\"></span> {usage}%"
-    },
-    "memory": {
-        "format": "<span size=\"125%\"></span> {}%"
-    },
-    "sway/workspaces": {
-        "on-click": "activate",
-        "disable-scroll": true
-    },
-    "custom/launcher": {
-        "format": "<span size=\"125%\">󱓞</span>",
-        "on-click": "wofi --show=drun lines=6 --prompt=\"\"",
-        "tooltip-format": "Launch an application"
-    },
-    "custom/terminal": {
-        "format": "<span size=\"125%\"></span>",
-        "on-click": "ghostty",
-        "tooltip-format": "Launch a terminal"
-    },
-    "custom/files": {
-        "format": "{icon}",
-        "format-icons": [""],
-        "on-click": "thunar",
-        "tooltip-format": "Browse files"
-    },
-    "temperature": {
-        "critical-threshold": 75,
-        "format": "<span size=\"125%\"></span> {temperatureC}°C"
-    },
-    "battery": {
-        "bat": "BAT0",
-        "full-at": 95,
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "<span size=\"125%\">{icon}</span> {capacity}%",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        "format-wifi": "<span size=\"125%\"></span> {ifname}",
-        "format-ethernet": "<span size=\"125%\">󰈁</span> {ifname}",
-        "format-disconnected": "<span size=\"125%\">⚠</span> Disconnected",
-        "tooltip-format": "Launch network manager",
-        "on-click": "nm-connection-editor"
-    },
-    "pulseaudio": {
-        "format": "<span size=\"125%\">{icon}</span> {volume}%",
-        "tooltip-format": "Launch audio control",
-        "format-muted": "",
-        "format-icons": {
-            "headphones": "",
-            "default": ["", ""]
-        },
-        "on-click": "pavucontrol"
-    },
+    "format-muted": "",
+    "on-click": "pavucontrol",
+    "tooltip-format": "Launch audio control"
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "on-click": "activate"
+  },
+  "temperature": {
+    "critical-threshold": 75,
+    "format": "<span size=\"125%\"></span> {temperatureC}°C"
+  }
 }

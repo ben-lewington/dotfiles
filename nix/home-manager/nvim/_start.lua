@@ -131,7 +131,6 @@ for _, cmd in pairs({
         "ColorsTrans",
         function(opts)
             utils.colorscheme_transparent(opts.fargs[1])
-            link_modern_treesitter_captures()
         end,
         { nargs = 1 }
     },
